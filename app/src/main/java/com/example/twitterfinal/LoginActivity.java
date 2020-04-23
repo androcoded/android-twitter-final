@@ -45,6 +45,10 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+        if (ParseUser.getCurrentUser()!=null){
+            startActivity(new Intent(LoginActivity.this,TweetUsers.class));
+            finish();
+        }
     }
 
     private void signingParseUser() {
@@ -57,6 +61,11 @@ public class LoginActivity extends AppCompatActivity {
                     public void done(ParseUser user, ParseException e) {
                         if (user!=null && e == null){
                             Toast.makeText(LoginActivity.this, "Signed in successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this,TweetUsers.class));
+                            finish();
+                        }else {
+                            ParseUser.logOut();
+                            Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     progressDialog.dismiss();
                     }
