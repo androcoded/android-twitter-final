@@ -94,6 +94,7 @@ public class TweetUsers extends AppCompatActivity implements AdapterView.OnItemC
                 finish();
                 break;
             case R.id.mntSendTweet:
+                startActivity(new Intent(this,SendTweet.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
